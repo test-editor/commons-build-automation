@@ -29,6 +29,8 @@
 #   The condition 'FIREFIX_VERSION = latest' ensures that only one execution per build
 #   in the context of matrix builds takes place!
 #
+#   Make sure to have an entry within your .gitignore for this shell script!
+#
 #   given there is a deploy section within the '.travis.yml':
 #     deploy:
 #       skip_cleanup: true
@@ -40,9 +42,10 @@
 #         condition: "$FIREFOX_VERSION = latest"
 #         tags: true
 #         repo: test-editor/...
+#
 #  you can include the call to the tagging in the 'after_success:' section of your yml file:
 #    after_success:
-#    - 'if [ "$FIREFOX_VERSION" = "latest" -a "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_TAG" = "" ]; then git archive --remote=https://github.com/testeditor/commons-build-automation.git HEAD travis/deploy/tag_with_new_patch_version.sh > tag_with_new_patch_version.sh; bash tag_with_new_patch_version.sh; fi'
+#    - 'if [ "$FIREFOX_VERSION" = "latest" -a "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_TAG" = "" ]; then wget https://github.com/test-editor/commons-build-automation/raw/master/travis/deploy/tag_with_new_patch_version.sh; bash tag_with_new_patch_version.sh; fi'
 #
 #
 tag_author="srvte tagging"
