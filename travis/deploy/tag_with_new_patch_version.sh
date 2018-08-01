@@ -26,7 +26,7 @@
 #
 # USAGE:
 #
-#   The condition 'FIREFIX_VERSION = latest' ensures that only one execution per build
+#   The condition 'FIREFOX_VERSION = latest' ensures that only one execution per build
 #   in the context of matrix builds takes place!
 #
 #   Make sure to have an entry within your .gitignore for this shell script!
