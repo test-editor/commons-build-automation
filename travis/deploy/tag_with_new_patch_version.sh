@@ -79,7 +79,7 @@ else
       git tag # show tag info
       npm version patch # create git commit and tag automatically!
       # postversion action in package.json will execute git push && git push --tags
-      new_version=`npm view @testeditor/testexec-details version`
+      new_version=`npm view $package_name version`
       echo "tagged now with v$new_version"
     fi
   else
