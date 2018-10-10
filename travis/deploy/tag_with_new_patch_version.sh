@@ -85,7 +85,7 @@ else
       git remote -v
       echo "show status"
       git status
-      echo "reset hard to allow for changes made (e.g. yarn.lock) to be forgotten)"
+      echo "reset hard to allow for changes made (e.g. yarn.lock) to be forgotten"
       git reset --hard
       echo "show final status"
       git status
