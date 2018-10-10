@@ -71,7 +71,7 @@ else
       git config user.email "$GH_EMAIL"
       echo "remove origin (if present)"
       git remote remove origin || true
-      echo "add new origin https://$GH_TOKEN@github.com$github_project"
+      echo "add new origin https://**SOME GITHUB TOKEN***@github.com$github_project"
       git remote add origin https://$GH_TOKEN@github.com$github_project
       echo "show configured remotes"
       git remote -v
