@@ -66,17 +66,32 @@ else
     else
       # configure for git push to work automatically
       github_project=`git config --get remote.origin.url | sed 's|.*\(/[^/]*/[^/]*\)$|\1|g'`
+      echo "configuring user"
       git config user.name "$tag_author"
       git config user.email "$GH_EMAIL"
+      echo "remove origin (if present)"
       git remote remove origin || true
+      echo "add new origin https://**SOME GITHUB TOKEN***@github.com$github_project"
       git remote add origin https://$GH_TOKEN@github.com$github_project
-      git remote -v # show the now configured remotes
-      git checkout - # if detached, try to return to a regular branch
+      echo "show configured remotes"
+      git remote -v
+      echo "checkout so that if detached, try to return to a regular branch"
+      git checkout -
+      echo "fetch everything"
       git fetch # necessary to make origin/master known
+      echo "set upstream for this branch to origin/master"
       git branch --set-upstream-to=origin/master
-      git remote -v # show the now configured remotes
-      git status # show some info
-      git tag # show tag info
+      echo "show configured remotes"
+      git remote -v
+      echo "show status"
+      git status
+      echo "reset hard to allow for changes made (e.g. yarn.lock) to be forgotten"
+      git reset --hard
+      echo "show final status"
+      git status
+      echo "show tag info"
+      git tag
+      echo "execute npm version patch"
       npm version patch # create git commit and tag automatically!
       # postversion action in package.json will execute git push && git push --tags
       new_version=`npm view $package_name version`
