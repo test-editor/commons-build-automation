@@ -20,7 +20,7 @@
 # Tagging should take place only once if you are using a build matrix.
 #
 # To ensure that tagging is not done on an already tagged build, the author of
-# the git push is checked. For the git push a technical user is used (srvte). If
+# the git push is checked. For the git push a technical user is used (teservice). If
 # the latest author of a push is this technical user, no tagging is done (since
 # this would enter an endless loop of tag -> publish cycles).
 #
@@ -48,7 +48,7 @@
 #    - 'if [ "$FIREFOX_VERSION" = "latest" -a "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_TAG" = "" ]; then wget https://github.com/test-editor/commons-build-automation/raw/master/travis/deploy/tag_with_new_patch_version.sh; bash tag_with_new_patch_version.sh; fi'
 #
 #
-tag_author="srvte tagging"
+tag_author="teservice tagging"
 last_author=`git show --format="%aN" HEAD | head -n 1`
 echo "Last author was: $last_author"
 if [ "$last_author" == "$tag_author" ]; then
